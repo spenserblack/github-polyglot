@@ -1,0 +1,15 @@
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+  Include:
+    - '**/.rb'
+    - '**/*.gemfile'
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/*.ru'
+    - '**/Gemfile'
+    - '**/Rakefile'

@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'github-polyglot'
+
+puts "1 + 2 = #{Adder.new(1).add(2)}"
