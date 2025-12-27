@@ -22,7 +22,31 @@ class GithubPolyglot
     @username
   end
 
+  # Gets language stats for the user.
+  def languages
+    compiled = {}
+    each_repo do |repo|
+      languages = repo_languages(repo.name)
+      languages.to_h.each_pair do |language, size|
+        compiled[language] = size
+      end
+    end
+    compiled
+  end
+
   private
+
+  # Gets the language stats for a single repository from the GitHub API.
+  #
+  # @param [String] repository The name of the owner's repository.
+  def repo_languages(repository_name)
+    @client.languages(repo_qualifier(repository_name))
+  end
+
+  # Returns the repository path (`owner/repository`) using the username as the owner.
+  def repo_qualifier(repository_name)
+    "#{username}/#{repository_name}"
+  end
 
   # Yields each repository
   def each_repo(&block)
