@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require 'dotenv'
 require 'github-polyglot'
 
-puts "1 + 2 = #{Adder.new(1).add(2)}"
+Dotenv.load
+
+polyglot = GithubPolyglot.with_env
+puts "username: #{polyglot.username}"

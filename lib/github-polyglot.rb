@@ -1,18 +1,37 @@
 # frozen_string_literal: true
+require 'octokit'
 
-# Creates an adder that can add one number to another
-#
-# @param [Integer] num The number for adding
-class Adder
-  def initialize(num)
-    @num = num
+# Gets language usage stats for a GitHub user.
+class GithubPolyglot
+  TOKEN_ENV_VAR = 'GITHUB_TOKEN'
+
+  # @param [String, Nil] username The username to look up.
+  # @param [String, Nil] token The GitHub token to use in requests.
+  def initialize(username: nil, token: nil)
+    @username = username
+    @token = token
+    @client = Octokit::Client.new(access_token: token)
   end
 
-  # Adds a number
-  #
-  # @param [Integer] other The other number to add
-  # @return [Integer] The addition result
-  def add(other)
-    @num + other
+  # Gets the username to use.
+  def username
+    return @username unless @username.nil?
+    @username = token_username
+    @username
+  end
+
+  # Uses environment variables to initialize the class.
+  def self.with_env
+    new(token: ENV.fetch(TOKEN_ENV_VAR, nil))
+  end
+
+  private
+
+  # Gets the username for the authenticated token.
+  # @return [String, Nil] The authenticated user.
+  def token_username
+    return nil if @token.nil?
+
+    @client.user.login
   end
 end
