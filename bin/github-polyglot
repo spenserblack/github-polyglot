@@ -3,8 +3,9 @@
 
 require 'dotenv'
 require 'github-polyglot'
+require 'github-polyglot/cli'
 
 Dotenv.load
 
-polyglot = GithubPolyglot.with_env
-puts "username: #{polyglot.username}"
+cli = GithubPolyglot::CLI.new
+cli.run

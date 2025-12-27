@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'octokit'
 
 # Gets language usage stats for a GitHub user.
@@ -16,13 +17,9 @@ class GithubPolyglot
   # Gets the username to use.
   def username
     return @username unless @username.nil?
+
     @username = token_username
     @username
-  end
-
-  # Uses environment variables to initialize the class.
-  def self.with_env
-    new(token: ENV.fetch(TOKEN_ENV_VAR, nil))
   end
 
   private
