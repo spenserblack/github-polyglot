@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'github-polyglot'
+require 'github_polyglot'
 require 'octokit'
 
 RSpec.describe GithubPolyglot do

@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 require 'dotenv'
-require 'github-polyglot'
-require 'github-polyglot/cli'
+require 'github_polyglot'
+require 'github_polyglot/cli'
 
 Dotenv.load
 
