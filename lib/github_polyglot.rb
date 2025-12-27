@@ -22,6 +22,18 @@ class GithubPolyglot
     @username
   end
 
+  # Yields each repository
+  def each_repo(&block)
+    repos = @client.repos(username)
+    while repos
+      repos.each(&block)
+      next_query = @client.last_response.rels[:next]
+      break unless next_query
+
+      repos = @client.get(next_query.href)
+    end
+  end
+
   private
 
   # Gets the username for the authenticated token.

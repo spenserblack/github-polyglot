@@ -13,7 +13,9 @@ class GithubPolyglot
       Dotenv.load
       token = ENV.fetch(GithubPolyglot::TOKEN_ENV_VAR, nil)
       polyglot = GithubPolyglot.new(username: @username, token: token)
-      puts "username: #{polyglot.username}"
+      polyglot.each_repo do |repo|
+        puts "repository: #{repo.name}"
+      end
     end
 
     private
