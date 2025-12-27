@@ -26,6 +26,8 @@ class GithubPolyglot
   def languages
     compiled = {}
     each_repo do |repo|
+      next if repo[:fork]
+
       languages = repo_languages(repo.name)
       languages.to_h.each_pair do |language, size|
         compiled[language] = size
