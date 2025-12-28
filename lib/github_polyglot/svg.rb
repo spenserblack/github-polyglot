@@ -26,7 +26,7 @@ class GithubPolyglot
           xml.g(mask: "url(##{mask_id})") do
             language_x = 0.0
 
-            @languages.each_pair do |language, amount|
+            sorted_languages.each do |language, amount|
               ratio = amount / total_amount
               language_width = width * ratio
               fill = color(language)
@@ -49,6 +49,11 @@ class GithubPolyglot
       xml.mask(id: id) do
         xml.rect(x: 0, y: 0, width: width, height: height, rx: radius, ry: radius, fill: 'white')
       end
+    end
+
+    # Returns the languages sorted by amount.
+    def sorted_languages
+      @sorted_languages ||= @languages.sort_by { |_, amount| -amount }
     end
 
     # Gets the color as a hex code string for a language.
