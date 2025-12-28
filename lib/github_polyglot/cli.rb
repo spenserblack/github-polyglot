@@ -17,11 +17,12 @@ class GithubPolyglot
       token = ENV.fetch(GithubPolyglot::TOKEN_ENV_VAR, nil)
       polyglot = GithubPolyglot.new(username: @username, token: token)
 
-      if format == :print
+      case format
+      when :print
         polyglot.print
-      elsif format == :json
+      when :json
         puts polyglot.json(pretty: false)
-      elsif format == :'pretty-json'
+      when :'pretty-json'
         puts polyglot.json(pretty: true)
       else
         throw NotImplementedError, "Unexpected format: #{format}"
