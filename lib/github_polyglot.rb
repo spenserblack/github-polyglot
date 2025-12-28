@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'github_polyglot/svg'
 require 'json'
 require 'octokit'
 
@@ -48,6 +49,12 @@ class GithubPolyglot
     languages.each_pair do |language, amount|
       puts "#{language}: #{amount}"
     end
+  end
+
+  # Generates an SVG string for the languages
+  def svg
+    generator = SVG.new(languages)
+    generator.generate
   end
 
   private

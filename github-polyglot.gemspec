@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.require_paths          = ['lib']
 
-  spec.required_ruby_version  = Gem::Requirement.new('>= 2.7.0')
+  spec.required_ruby_version  = Gem::Requirement.new('>= 3.1')
 
   spec.metadata = {
     'homepage_uri' => spec.homepage,
@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
   # NOTE: For octokit
   spec.add_dependency 'faraday-retry', '~> 2.4'
 
+  spec.add_dependency 'github-linguist', '~> 9.3'
   spec.add_dependency 'json', '~> 2.18'
+  spec.add_dependency 'nokogiri', '~> 1.18', '>= 1.18.10'
   spec.add_dependency 'octokit', '~> 10.0'
 end
