@@ -1,0 +1,43 @@
+# Gets language usage stats for a GitHub user.
+class GithubPolyglot
+  @username: String?
+
+  @token: String?
+
+  @client: Octokit::Client
+
+  TOKEN_ENV_VAR: "GITHUB_TOKEN"
+
+  # @param [String, Nil] username The username to look up.
+  # @param [String, Nil] token The GitHub token to use in requests.
+  def initialize: (?username: String?, ?token: String?) -> void
+
+  # Gets the username to use.
+  def username: () -> String?
+
+  # Gets language stats for the user.
+  def languages: () -> ::Hash[Symbol, Integer]
+
+  # Gets the language stats for the user as JSON.
+  def json: (?pretty: bool) -> String
+
+  # Prints the languages
+  def print: () -> void
+
+  private
+
+  # Gets the language stats for a single repository from the GitHub API.
+  #
+  # @param [String] repository The name of the owner's repository.
+  def repo_languages: (untyped repository_name) -> Hash[Symbol, untyped]
+
+  # Returns the repository path (`owner/repository`) using the username as the owner.
+  def repo_qualifier: (untyped repository_name) -> String
+
+  # Yields each repository
+  def each_repo: () { (Octokit::Repository) -> void } -> void
+
+  # Gets the username for the authenticated token.
+  # @return [String, Nil] The authenticated user.
+  def token_username: () -> (nil | String)
+end

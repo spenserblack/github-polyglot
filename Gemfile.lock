@@ -49,6 +49,8 @@ GEM
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.3.1)
+    rbs (3.10.0)
+      logger
     regexp_parser (2.11.3)
     rexml (3.4.4)
     rspec (3.13.2)
@@ -111,6 +113,7 @@ DEPENDENCIES
   github-polyglot!
   overcommit (~> 0.68)
   rake (~> 13.3)
+  rbs (~> 3.10)
   rspec (~> 3.13)
   rubocop (~> 1.82)
   rubocop-rake (~> 0.7)

@@ -8,6 +8,7 @@ gemspec
 
 gem 'overcommit', '~> 0.68'
 gem 'rake', '~> 13.3'
+gem 'rbs', '~> 3.10'
 gem 'rspec', '~> 3.13'
 gem 'rubocop', '~> 1.82'
 gem 'rubocop-rake', '~> 0.7'
