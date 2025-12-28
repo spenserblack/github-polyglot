@@ -6,6 +6,15 @@ require 'nokogiri'
 class GithubPolyglot
   # Generates SVG for language stats
   class SVG
+    # Width of the SVG image
+    WIDTH = 300
+
+    # Height of the language bar
+    BAR_HEIGHT = 8
+
+    # Radii of rounded elements
+    RADII = 5
+
     # The number of the most popular languages to show. If there are more than this
     # amount of languages, the least common get grouped under "Other" languages.
     TOP_LANGUAGES = 6
@@ -13,17 +22,9 @@ class GithubPolyglot
     # The name of the entry for remaining languages.
     OTHER_LANGUAGES = :Other
 
-    attr_reader :width, :height, :radii
-
     # @param [Hash] languages Maps language name symbols to amounts.
-    # @param [Integer, Float] width The width of the language bar
-    # @param [Integer, Float] height The height of the language bar
-    # @param [Integer, Float] radii The radii of language bar ends
-    def initialize(languages, width: 300, height: 8, radii: 5)
+    def initialize(languages)
       @languages = languages
-      @width = width
-      @height = height
-      @radii = radii
     end
 
     # Creates an SVG string
@@ -38,9 +39,24 @@ class GithubPolyglot
       builder.to_xml
     end
 
+    # Gets the width of the SVG
+    def width
+      WIDTH
+    end
+
+    # Gets the height of the SVG
+    def height
+      BAR_HEIGHT
+    end
+
+    # Gets the radii of rounded elements
+    def radii
+      RADII
+    end
+
     # Alias for radii
     def radius
-      radii
+      RADII
     end
 
     private
@@ -61,7 +77,7 @@ class GithubPolyglot
     # Builds the mask for the rounded corners.
     def mask(xml, id)
       xml.mask('mask-type': 'luminance', id: id) do
-        xml.rect(x: 0, y: 0, width: width, height: height, rx: radius, ry: radius, fill: 'white')
+        xml.rect(x: 0, y: 0, width: width, height: BAR_HEIGHT, rx: radius, ry: radius, fill: 'white')
       end
     end
 
@@ -83,7 +99,7 @@ class GithubPolyglot
       fill = color(language)
       return x_offset unless fill
 
-      xml.rect(x: x_offset, y: 0, width: language_width, height: height, fill: fill)
+      xml.rect(x: x_offset, y: 0, width: language_width, height: BAR_HEIGHT, fill: fill)
 
       x_offset + language_width
     end
