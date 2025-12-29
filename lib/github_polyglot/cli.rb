@@ -6,7 +6,7 @@ require 'optparse'
 class GithubPolyglot
   # Class for the command-line interface
   class CLI
-    FORMAT_OPTIONS = %i[print json pretty-json].freeze
+    FORMAT_OPTIONS = %i[print json pretty-json svg].freeze
 
     def initialize
       parser.parse!
@@ -25,12 +25,10 @@ class GithubPolyglot
 
     def output_format
       case format
-      when :print
-        @polyglot.print
-      when :json
-        puts @polyglot.json(pretty: false)
-      when :'pretty-json'
-        puts @polyglot.json(pretty: true)
+      when :print then @polyglot.print
+      when :json then puts @polyglot.json(pretty: false)
+      when :'pretty-json' then puts @polyglot.json(pretty: true)
+      when :svg then puts @polyglot.svg
       else
         throw NotImplementedError, "Unexpected format: #{format}"
       end

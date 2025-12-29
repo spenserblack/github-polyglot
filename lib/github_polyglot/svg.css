@@ -1,0 +1,25 @@
+:root {
+  font-family: "Noto Sans", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  --text-color: #1F2328;
+  --text-color-muted: #59636E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #D1D7E0;
+    --text-color-muted: #9198A1;
+  }
+}
+
+text, tspan {
+  fill: var(--text-color);
+}
+tspan.muted {
+  fill: var(--text-color-muted);
+}
+
+.text-bold {
+  font-weight: 600;
+}
