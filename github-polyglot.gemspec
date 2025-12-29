@@ -3,8 +3,8 @@
 Gem::Specification.new do |spec|
   spec.name                   = 'github-polyglot'
   spec.version                = '0.1.0'
-  spec.summary                = 'Language stats for the GitHub user'
-  spec.description            = 'Fetches and aggregates language usage statistics for a GitHub user'
+  spec.summary                = '(Unofficial) Language stats for the GitHub user'
+  spec.description            = '(Unofficial) Fetches and aggregates language usage statistics for a GitHub user'
   spec.authors                = 'Spenser Black'
 
   spec.homepage               = 'https://github.com/spenserblack/github-polyglot'
