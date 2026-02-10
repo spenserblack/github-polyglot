@@ -3,6 +3,11 @@
 Linguist, but for the user instead of the repository.
 
 This scans all of the repositories that the user has and compiles the language stats.
+The stats can be output as...
+
+- A human-readable terminal output
+- JSON
+- An SVG file resembling the language bar
 
 If the `GITHUB_TOKEN` environment variable is set, it can use that token to get more
 accurate stats and avoid rate-limiting. You can also avoid needing to pass `--username`
