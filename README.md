@@ -1,5 +1,7 @@
 # github-polyglot
 
+[![CI](https://github.com/spenserblack/github-polyglot/actions/workflows/ci.yml/badge.svg)](https://github.com/spenserblack/github-polyglot/actions/workflows/ci.yml)
+
 Linguist, but for the user instead of the repository.
 
 This scans all of the repositories that the user has and compiles the language stats.
