@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
+    "github.vscode-github-actions",
     "shopify.ruby-extensions-pack"
   ]
 }
