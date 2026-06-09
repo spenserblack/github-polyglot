@@ -2,6 +2,7 @@
 bin/
 spec/
 .devcontainer/
+.github/
 .vscode/
 .editorconfig
 .env
