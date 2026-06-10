@@ -16,4 +16,5 @@ action/
 Gemfile
 Gemfile.lock
 Rakefile
+RELEASING.md
 *.gem
