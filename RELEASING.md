@@ -8,5 +8,6 @@ This document provides a checklist for creating a new release.
 2. Push the new tag with `git tag <TAG_NAME>` and `git push origin <TAG_NAME>`.
    - The [release workflow](./.github/workflows/release.yml) should handle creating a draft release
      and pushing a new Docker image.
+   - Push (or force push) a "shortcut" tag. For example, for `v1.2.3`, push `v1`, too.
 3. Publish the drafted release.
 4. Publish the Ruby gem.
