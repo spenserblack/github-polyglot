@@ -1,0 +1,30 @@
+name: GitHub Polyglot
+description: Compile language statistics for a GitHub user
+branding:
+  icon: code
+  color: orange
+inputs:
+  token:
+    description: The GitHub token for the API
+    required: false
+  user:
+    description: The user to analyze
+    required: true
+    default: ${{ github.repository_owner }}
+  format:
+    description: The format of the output
+    required: true
+    default: print
+outputs:
+  output:
+    description: The output of the executable
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    GITHUB_TOKEN: ${{ inputs.token }}
+  args:
+    - "--user"
+    - ${{ inputs.user }}
+    - "--format"
+    - ${{ inputs.format }}

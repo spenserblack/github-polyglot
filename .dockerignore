@@ -5,6 +5,7 @@ spec/
 .github/
 .ruby-lsp/
 .vscode/
+action/
 .editorconfig
 .env
 .env.example
