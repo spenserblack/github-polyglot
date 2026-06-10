@@ -1,3 +1,7 @@
 #!/bin/sh -l
 OUTPUT="$(github-polyglot "$@")"
-echo "output=$OUTPUT" >> $GITHUB_OUTPUT
+# NOTE: We still want to show the output to the user, which can be helpful if the user is using
+#       the `print` format and just wants to see the output in the action log.
+echo -n "$OUTPUT"
+# NOTE: Save the output to the `output` output of the action
+echo -n "output=$OUTPUT" >> $GITHUB_OUTPUT
