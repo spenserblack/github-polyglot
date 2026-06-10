@@ -17,6 +17,7 @@ class GithubPolyglot
       Dotenv.load
 
       token = ENV.fetch(GithubPolyglot::TOKEN_ENV_VAR, nil)
+      token = nil if token&.empty?
       @polyglot = GithubPolyglot.new(username: @username, token: token)
       output_format
     end
